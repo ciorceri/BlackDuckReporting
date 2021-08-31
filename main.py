@@ -4,7 +4,6 @@ import requests
 import argparse
 import blackduck
 
-DEBUG = False
 csv_header = ['Repository', 'Component', 'Timestamp', 'DependencyType', 'Version', 'LicenseRisk', 'SecurityRisk',
               'VersionRisk', 'ActivityRisk', 'OperationalRisk', 'VulnerabilityId', 'Description', 'Url', 'Solution']
 ''' Dependency types:
@@ -24,10 +23,10 @@ class ArgumentParser(object):
         self.parser.add_argument("-b", "--baseurl", type=str, required=True, help="Url to BlackDuck server")
         self.parser.add_argument("-t", "--token", type=str, required=True,
                                  help="Token used to connect to BlackDuck server")
-        self.parser.add_argument("-v", "--version", type=str, required=False, default="master",
-                                 help="Project version to scan")
         self.parser.add_argument("-f", "--filterproject", type=str, required=False, default="",
                                  help="Filter project names")
+        self.parser.add_argument("-v", "--version", type=str, required=False, default="master",
+                                 help="Project version to scan")
 
     def parse(self, args):
         return self.parser.parse_args(args)
